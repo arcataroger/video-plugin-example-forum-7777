@@ -14,7 +14,7 @@
     "coverImage": "docs/cover-1200x800.png",
     "previewImage": "docs/preview.mp4",
     "entryPoint": "dist/index.html",
-    "permissions": []
+    "permissions": ["currentUserAccessToken"]
   },
   "files": [
     "dist",
