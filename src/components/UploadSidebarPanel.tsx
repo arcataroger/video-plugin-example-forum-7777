@@ -3,6 +3,7 @@ import { buildClient } from "@datocms/cma-client-browser";
 import type { UploadTrack } from "@datocms/cma-client/src/generated/SimpleSchemaTypes";
 import { RenderUploadSidebarPanelCtx } from "datocms-plugin-sdk";
 import { useEffect, useState } from "react";
+import "datocms-react-ui/styles.css";
 
 type AssetSidebarPanelProps = {
   ctx: RenderUploadSidebarPanelCtx;
