@@ -1,6 +1,6 @@
 import { Button, Canvas } from "datocms-react-ui";
 import { buildClient } from "@datocms/cma-client-browser";
-import { type UploadTrack } from "@datocms/cma-client/src/generated/SimpleSchemaTypes";
+import type { UploadTrack } from "@datocms/cma-client/src/generated/SimpleSchemaTypes";
 import { RenderUploadSidebarPanelCtx } from "datocms-plugin-sdk";
 import { useEffect, useState } from "react";
 
