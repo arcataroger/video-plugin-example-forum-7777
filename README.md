@@ -1,0 +1,3 @@
+# Video Plugin Example
+
+<INSERT-YOUR-PLUGIN-DESCRIPTION-HERE>
