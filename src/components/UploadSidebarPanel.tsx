@@ -96,7 +96,10 @@ export const UploadSidebarPanel = ({ ctx }: AssetSidebarPanelProps) => {
 
     try {
       await ctx.notice("Beginning subtitle replacement, please wait...");
+
+      // Build the promises
       const concurrentUpdates = tracks.map(async (track) => {
+        // Upload our new subtitles to the media area temporarily
         const updatedSubtitleFile = await client.uploads.createFromFileOrBlob({
           fileOrBlob: new Blob([updatedTrackFiles[track.id]], {
             type: "text/vtt",
@@ -104,8 +107,10 @@ export const UploadSidebarPanel = ({ ctx }: AssetSidebarPanelProps) => {
           filename: `${track.upload.id}-${track.language_code}-replaced`,
         });
 
-        // There's currently a bug with uploadTracks.create() (reported and awaiting a fix)
-        // In the meantime we'll use rawCreate as a workaround
+        // Associate the uploaded file as a new track for the media
+
+        /* There's currently a bug with uploadTracks.create() (reported and awaiting a fix)
+         In the meantime we'll use rawCreate as a workaround */
 
         await client.uploadTracks.rawCreate(track.upload.id, {
           data: {
@@ -118,6 +123,9 @@ export const UploadSidebarPanel = ({ ctx }: AssetSidebarPanelProps) => {
             },
           },
         });
+
+        // Clean up the temporary subtitle file (we don't need it after the track association)
+        await client.uploads.destroy(updatedSubtitleFile.id);
       });
 
       await Promise.all(concurrentUpdates);
