@@ -1,18 +1,18 @@
-import {connect, RenderUploadSidebarPanelCtx} from 'datocms-plugin-sdk';
+import {connect} from 'datocms-plugin-sdk';
 import {render} from "./utils/render.tsx";
-import {AssetSidebarPanel} from "./components/AssetSidebarPanel.tsx";
+import {UploadSidebarPanel} from "./components/UploadSidebarPanel.tsx";
 
 connect({
     uploadSidebarPanels() {
         return [
             {
-                id: 'videoPluginExample',
-                label: 'Video Plugin Example',
+                id: 'uploadSidebarPanelExample',
+                label: 'Upload Sidebar Panel Example',
                 startOpen: true,
             },
         ];
     },
-    renderUploadSidebarPanel(_:string, ctx: RenderUploadSidebarPanelCtx) {
-        render(<AssetSidebarPanel ctx={ctx}/>);
+    renderUploadSidebarPanel(_:string, ctx) {
+        render(<UploadSidebarPanel ctx={ctx}/>);
     },
 });
