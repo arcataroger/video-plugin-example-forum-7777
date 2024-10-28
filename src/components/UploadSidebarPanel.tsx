@@ -69,8 +69,8 @@ export const UploadSidebarPanel = ({ ctx }: AssetSidebarPanelProps) => {
         const responses = await Promise.all(concurrentFetches);
         setTrackFiles(Object.assign({}, ...responses));
       } catch (error) {
-        console.error("Fetch to Mux failed:", error);
-        setTrackFiles({}); // Set an empty state or handle as necessary
+        console.error("Error fetching subtitle files from Mux:", error);
+        setTrackFiles({});
       }
       setIsLoading(false);
     };
